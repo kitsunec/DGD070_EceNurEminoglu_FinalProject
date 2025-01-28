@@ -38,3 +38,4 @@ public class GameCreator : MonoBehaviour
         _movementFeature.Cleanup();
     }
 }
+
