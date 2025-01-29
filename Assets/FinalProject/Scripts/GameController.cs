@@ -9,7 +9,9 @@ public class GameController : MonoBehaviour
     private Contexts _contexts;
     private InputFeature _inputFeature;
     private PlayerControlFeature _controlFeature;
+    private MovementFeature _movementFeature;
     private ViewFeature _viewFeature;
+    private PadInteractionFeature _padInteractionFeature;
 
     void Start()
     {
@@ -17,25 +19,34 @@ public class GameController : MonoBehaviour
 
         _inputFeature = new InputFeature(_contexts);
         _controlFeature = new PlayerControlFeature(_contexts);
+        _movementFeature = new MovementFeature(_contexts);
         _viewFeature = new ViewFeature(_contexts);
+        _padInteractionFeature = new PadInteractionFeature(_contexts);
 
         _inputFeature.Initialize();
         _controlFeature.Initialize();
+        _movementFeature.Initialize();
         _viewFeature.Initialize();
+        _padInteractionFeature.Initialize();
     }
 
     private void Update()
     {
         _inputFeature.Execute();
         _controlFeature.Execute();
+        _movementFeature.Execute();
         _viewFeature.Execute();
+        _padInteractionFeature.Execute();
     }
 
     private void LateUpdate()
     {
         _inputFeature.Cleanup();
         _controlFeature.Cleanup();
+        _movementFeature.Cleanup();
         _viewFeature.Cleanup();
+        _padInteractionFeature.Cleanup();
     }
 }
+
 
